@@ -34,8 +34,20 @@ class JUnitTester {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	public void blobConstructorTestFileName() throws IOException {
+		Blob junitTest = new Blob ("test.txt");
+		File myObj = new File ("c3499c2729730a7f807efb8676a92dcb6f8a3f8f.txt");
+		assertTrue(myObj.exists());
+	}
+	
+	public void blobConstructorTestContents() throws IOException {
+		Path filePath = Path.of("c3499c2729730a7f807efb8676a92dcb6f8a3f8f.txt");
+		assertTrue (Files.readString(filePath).equals("example"));
+	}
+	
+	public void getHash() throws IOException {
+		Blob junitTest = new Blob ("test.txt");
+		assertTrue(junitTest.getHash().equals("c3499c2729730a7f807efb8676a92dcb6f8a3f8f"));
 	}
 
 }
