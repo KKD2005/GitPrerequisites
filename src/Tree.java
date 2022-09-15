@@ -14,6 +14,7 @@ public class Tree {
 	String body; 
 	String Sha1;
 	public Tree (ArrayList<String> input) throws IOException {
+		body="";
 		map = input;
 		for (int i = 0; i<map.size(); i++) {
 			body = body + map.get(i) + "\n";
@@ -28,7 +29,7 @@ public class Tree {
 	            // digest() method is called
 	            // to calculate message digest of the input string
 	            // returned as array of byte
-	            byte[] messageDigest = md.digest(Sha1.getBytes());
+	            byte[] messageDigest = md.digest(body.getBytes());
 	 
 	            // Convert byte array into signum representation
 	            BigInteger no = new BigInteger(1, messageDigest);
@@ -55,7 +56,7 @@ public class Tree {
          f2.createNewFile();
          Path p = Paths.get("objects/"+Sha1+".txt");
          try {
-             Files.writeString(p, "body", StandardCharsets.ISO_8859_1);
+             Files.writeString(p, body, StandardCharsets.ISO_8859_1);
          } catch (IOException e) {
              // TODO Auto-generated catch block
              e.printStackTrace();
